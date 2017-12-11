@@ -16,9 +16,14 @@ int main()
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
+
+	double x = 0;
+	double y = 0;
 	while (!window.Closed())
 	{
 		window.Clear();
+		window.GetMousePosition(x, y);
+		std::cout << "X: " << x << " Y: " << y << std::endl;
 #if 1
 		glBegin(GL_QUADS);
 		glVertex2f(-0.5f, -0.5f);
