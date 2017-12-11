@@ -4,8 +4,6 @@ namespace Sparky
 {
 	namespace Graphics
 	{
-		void WindowResize(GLFWwindow* window, int width, int height);
-
 		Window::Window(const char* title, int width, int height)
 		{
 			m_Title = title;
@@ -41,6 +39,16 @@ namespace Sparky
 
 			glfwMakeContextCurrent(m_Window);
 			glfwSetWindowSizeCallback(m_Window, WindowResize);
+
+
+			if (glewInit() != GLEW_OK)
+			{
+				std::cout << "Could not initialize GLEW!" << std::endl;
+				return false;
+			}
+
+			std::cout << "OPENGL: " << glGetString(GL_VERSION) << std::endl;
+
 			return true;
 		}
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GL\glew.h>
 #include <GLFW\glfw3.h>
 #include <iostream>
 
@@ -49,5 +50,9 @@ namespace Sparky
 			/// Initializes the window.
 			bool Init();
 		};
+
+		/// A callback function which resizes the
+		/// graphics in the window.
+		void WindowResize(GLFWwindow* window, int width, int height);
 	}
 }
