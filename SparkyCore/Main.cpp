@@ -9,6 +9,8 @@ using namespace Sparky;
 using namespace Graphics;
 using namespace Math;
 
+float* Multiply(float m_Elements[16], float otherm_Elements[16]);
+
 int main()
 {
 	Window window("Sparky", 960, 540);
@@ -18,14 +20,8 @@ int main()
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 	
-	Vec2 a(1.0f, 2.0f);
-	Vec2 b(2.0f, 4.0f);
-	
-	Vec2 c = a / b;
-
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
+	Mat4 position = Mat4::Translation(Vec3(2, 3, 4));
+	position *= Mat4::Identity();
 	while (!window.Closed())
 	{
 		
