@@ -76,8 +76,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\GLEW\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2015;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)bin\$(Configuration)</OutDir>
-    <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\$(Configuration)\Intermediates\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -129,9 +129,16 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
+    <ClCompile Include="src\math\Vec2.cpp" />
+    <ClCompile Include="src\math\Vec3.cpp" />
+    <ClCompile Include="src\math\Vec4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Window.h" />
+    <ClInclude Include="src\math\Math.h" />
+    <ClInclude Include="src\math\Vec2.h" />
+    <ClInclude Include="src\math\Vec3.h" />
+    <ClInclude Include="src\math\Vec4.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

@@ -1,4 +1,5 @@
 #include "src/graphics/Window.h"
+#include "src/math/Math.h"
 
 /*
 These are here for testing purposes and
@@ -6,6 +7,7 @@ will be removed once the window is tested.
 */
 using namespace Sparky;
 using namespace Graphics;
+using namespace Math;
 
 int main()
 {
@@ -15,15 +17,18 @@ int main()
 	GLuint vao;
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
+	
+	Vec2 a(1.0f, 2.0f);
+	Vec2 b(2.0f, 4.0f);
+	
+	Vec2 c = a / b;
 
-
-	double x = 0;
-	double y = 0;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << std::endl;
 	while (!window.Closed())
 	{
-		window.Clear();
-		window.GetMousePosition(x, y);
-		std::cout << "X: " << x << " Y: " << y << std::endl;
+		
 #if 1
 		glBegin(GL_QUADS);
 		glVertex2f(-0.5f, -0.5f);
