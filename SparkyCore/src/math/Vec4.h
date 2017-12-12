@@ -38,16 +38,16 @@ namespace Sparky
 
 		// Operators:
 			/// Adds two vectors.
-			friend Vec4& operator+(Vec4 left, const Vec4 &right);
+			friend Vec4 operator+(Vec4 left, const Vec4 &right);
 
 			/// Subtracts two vectors.
-			friend Vec4& operator-(Vec4 left, const Vec4 &right);
+			friend Vec4 operator-(Vec4 left, const Vec4 &right);
 
 			/// Multiplies two vectors.
-			friend Vec4& operator*(Vec4 left, const Vec4 &right);
+			friend Vec4 operator*(Vec4 left, const Vec4 &right);
 
 			/// Divides two vectors.
-			friend Vec4& operator/(Vec4 left, const Vec4 &right);
+			friend Vec4 operator/(Vec4 left, const Vec4 &right);
 
 			/// Returns true if this and the other have the same
 			/// X, Y, Z, and W components.

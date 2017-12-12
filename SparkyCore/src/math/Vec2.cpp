@@ -49,22 +49,22 @@ namespace Sparky
 			return *this;
 		}
 
-		Vec2& operator+(Vec2 left, const Vec2 &right)
+		Vec2 operator+(Vec2 left, const Vec2 &right)
 		{
 			return left.Add(right);
 		}
 
-		Vec2& operator-(Vec2 left, const Vec2 &right)
+		Vec2 operator-(Vec2 left, const Vec2 &right)
 		{
 			return left.Subtract(right);
 		}
 
-		Vec2& operator*(Vec2 left, const Vec2 &right)
+		Vec2 operator*(Vec2 left, const Vec2 &right)
 		{
 			return left.Multiply(right);
 		}
 
-		Vec2& operator/(Vec2 left, const Vec2 &right)
+		Vec2 operator/(Vec2 left, const Vec2 &right)
 		{
 			return left.Divide(right);
 		}
