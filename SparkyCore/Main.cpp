@@ -1,4 +1,5 @@
 #include "src/graphics/Window.h"
+#include "src/graphics/Shader.h"
 #include "src/math/Math.h"
 
 /*
@@ -9,35 +10,43 @@ using namespace Sparky;
 using namespace Graphics;
 using namespace Math;
 
-float* Multiply(float m_Elements[16], float otherm_Elements[16]);
-
 int main()
 {
 	Window window("Sparky", 960, 540);
-	glClearColor(0.2f, 0.3f, 0.8f, 1.0f);
+	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-	
-	Mat4 position = Mat4::Translation(Vec3(2, 3, 4));
-	position *= Mat4::Identity();
 
-	Vec4 column = position.columns[3];
-	std::cout << column << std::endl;
+	GLfloat vertices[] = 
+	{
+		0, 0, 0,
+		8, 0, 0,
+		0, 3, 0,
+		0, 3, 0,
+		8, 3, 0,
+		8, 0, 0
+	};
+	
+	GLuint vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
+
+	Mat4 ortho = Mat4::Orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+
+	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	shader.Enable();
+	shader.SetUniformMat4("pr_matrix", ortho);
+	shader.SetUniformMat4("ml_matrix", Mat4::Translation(Vec3(4, 3, 0)));
+
+	shader.SetUniform2f("light_pos", Vec2(4.0f, 1.5f));
+	shader.SetUniform4f("colour", Vec4(0.2f, 0.3f, 0.8f, 1.0f));
+
 	while (!window.Closed())
 	{
-		
-#if 1
-		glBegin(GL_QUADS);
-		glVertex2f(-0.5f, -0.5f);
-		glVertex2f(-0.5f,  0.5f);
-		glVertex2f( 0.5f,  0.5f);
-		glVertex2f( 0.5f, -0.5f);
-		glEnd();
-#else
-		glDrawArrays(GL_ARRAY_BUFFER, 0, 0);
-#endif
+		window.Clear();
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 		window.Update();
 	}
 

@@ -88,7 +88,7 @@ namespace Sparky
 			result.m_Elements[0] = a;
 			result.m_Elements[5] = q;
 			result.m_Elements[10] = - (far + near) / (far - near);
-			result.m_Elements[11] = -1;
+			result.m_Elements[11] = -1.0f;
 			result.m_Elements[14] = - (2*far*near) / (far - near);
 
 			return result;
