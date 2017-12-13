@@ -2,6 +2,7 @@
 
 #include "MathFunctions.h"
 #include "Vec3.h"
+#include "Vec4.h"
 
 namespace Sparky
 {
@@ -10,8 +11,13 @@ namespace Sparky
 		struct Mat4
 		{
 		// Members:
+		union
+		{
 			/// The elements of the 4 x 4 matrix.
 			float m_Elements[4 * 4];
+			/// The elements interpreted as column vectors.
+			Vec4 columns[4];
+		};
 
 		// Methods:
 			/// Constructs a 4 x 4 matrix where every

@@ -22,6 +22,9 @@ int main()
 	
 	Mat4 position = Mat4::Translation(Vec3(2, 3, 4));
 	position *= Mat4::Identity();
+
+	Vec4 column = position.columns[3];
+	std::cout << column << std::endl;
 	while (!window.Closed())
 	{
 		
